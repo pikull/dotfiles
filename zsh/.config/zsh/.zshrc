@@ -10,6 +10,8 @@ alias tree='tree -C'
 export EDITOR=nvim 
 export GUIEDITOR=code
 
+setopt globdots
+
 zstyle ':completion:*' menu select
 bindkey '^[[Z' reverse-menu-complete
 
@@ -19,7 +21,6 @@ unsetopt correct
 autoload -Uz compinit && compinit
 autoload -Uz colors && colors
 
-export PATH="/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
 export PATH="/opt/homebrew/bin:$PATH"
 
 # to update all extensions, run:
@@ -36,6 +37,7 @@ fi
 source $ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 # end plugins
+
 # The following lines have been added by Docker Desktop to enable Docker CLI completions.
 fpath=(/Users/akshunc/.docker/completions $fpath)
 autoload -Uz compinit
