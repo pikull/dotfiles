@@ -22,6 +22,7 @@ autoload -Uz compinit && compinit
 autoload -Uz colors && colors
 
 export PATH="/opt/homebrew/bin:$PATH"
+export PATH="~/Library/Python/3.9/bin:$PATH"
 
 # to update all extensions, run:
 # rm -rf $ZDOTDIR/plugins && exec zsh
