@@ -1,4 +1,11 @@
 vim.opt.mouse = "a"
+vim.opt.guicursor = {
+    "n-v-c:block",
+    "i-ci-ve:ver25",
+    "r-cr:hor20",
+    "o:hor50",
+    "t:block",
+}
 
 vim.opt.clipboard = "unnamedplus"
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
