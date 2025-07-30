@@ -5,7 +5,7 @@ alias la='lsd -lA'
 alias ll='lsd -l'
 
 alias vim='nvim'
-alias tree='tree -C'
+alias tree='tree -Ca'
 
 export EDITOR=nvim 
 export GUIEDITOR=code
@@ -23,6 +23,10 @@ autoload -Uz colors && colors
 
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="~/Library/Python/3.9/bin:$PATH"
+
+export NVM_DIR="$HOME/.config/nvm"
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 # to update all extensions, run:
 # rm -rf $ZDOTDIR/plugins && exec zsh
