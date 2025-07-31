@@ -1,19 +1,21 @@
 set -o vi
 
-alias ls='lsd'
-alias la='lsd -lA'
-alias ll='lsd -l'
+alias ls="lsd"
+alias la="lsd -lA"
+alias ll="lsd -l"
 
-alias vim='nvim'
-alias tree='tree -Ca'
+alias vim="nvim"
+alias tree="tree -Ca"
+
+alias npx="npx --use-pmpm"
 
 export EDITOR=nvim 
 export GUIEDITOR=code
 
 setopt globdots
 
-zstyle ':completion:*' menu select
-bindkey '^[[Z' reverse-menu-complete
+zstyle ":completion:*" menu select
+bindkey "^[[Z" reverse-menu-complete
 
 unsetopt correct_all
 unsetopt correct
