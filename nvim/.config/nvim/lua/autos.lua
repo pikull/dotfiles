@@ -18,7 +18,6 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "c", "cpp" },
 	callback = function()
-		vim.opt_local.smartindent = false
 		vim.opt_local.cindent = true
 		vim.opt_local.cinoptions = "g0,:0,l1,t0,+4,(0,u0,w1,m1"
 	end,
