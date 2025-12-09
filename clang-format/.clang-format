@@ -1,5 +1,19 @@
+# Compact LLVM style: one-line-friendly
 BasedOnStyle: LLVM
 IndentWidth: 4
 TabWidth: 4
 UseTab: Never
 AccessModifierOffset: -4
+
+# Pointer alignment
+PointerAlignment: Left
+ReferenceAlignment: Left
+
+# Allow short constructs on a single line
+AllowShortIfStatementsOnASingleLine: AllIfsAndElse
+AllowShortLoopsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: All
+AllowShortBlocksOnASingleLine: Always
+
+# Maximum line length before breaking
+ColumnLimit: 120 # adjust as needed
