@@ -24,7 +24,7 @@ autoload -Uz compinit && compinit
 autoload -Uz colors && colors
 
 export PATH="/opt/homebrew/bin:$PATH"
-export PATH="~/Library/Python/3.9/bin:$PATH"
+# export PATH="~/Library/Python/3.9/bin:$PATH" # uncomment this line to use macos default python installation
 
 export NVM_DIR="$HOME/.config/nvm"
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
