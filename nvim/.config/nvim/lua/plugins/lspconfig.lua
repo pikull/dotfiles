@@ -7,11 +7,20 @@ return {
   },
   {
     "williamboman/mason-lspconfig.nvim",
+    dependencies = {
+      "neovim/nvim-lspconfig",
+      "saghen/blink.cmp",
+    },
     config = function()
+      local capabilities = require('blink.cmp').get_lsp_capabilities()
       require("mason-lspconfig").setup({
-        -- lsp setup
-        ensure_installed = { "lua_ls", "pyright", "clangd", "html", "cssls", "ts_ls" },
-        -- end setup
+        ensure_installed = {},
+        handlers = {
+          function(server)
+            vim.lsp.config(server, { capabilities = capabilities })
+            vim.lsp.enable(server)
+          end,
+        }
       })
     end,
   },
@@ -29,21 +38,9 @@ return {
           },
         },
       },
+      "saghen/blink.cmp",
     },
     config = function()
-      local cp = require("cmp_nvim_lsp").default_capabilities()
-
-      local lspconfig = require("lspconfig")
-      local lsp_opts = { capabilities = cp }
-      -- lsp setup
-      lspconfig.lua_ls.setup(lsp_opts)
-      lspconfig.pyright.setup(lsp_opts)
-      lspconfig.clangd.setup(lsp_opts)
-      lspconfig.html.setup(lsp_opts)
-      lspconfig.cssls.setup(lsp_opts)
-      lspconfig.ts_ls.setup(lsp_opts)
-      -- end setup
-
       vim.api.nvim_create_autocmd("LspAttach", {
         group = vim.api.nvim_create_augroup("LspConfig", {}),
         callback = function(ev)
@@ -53,6 +50,7 @@ return {
           vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
           vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
           vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
+          vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, opts)
         end,
       })
     end,
