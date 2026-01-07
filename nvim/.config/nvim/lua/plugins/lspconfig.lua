@@ -57,33 +57,33 @@ return {
 	},
 	{
 		"stevearc/conform.nvim",
-		opts = {
+		 opts = {
 			formatters_by_ft = {
-				javascript = { "prettierd" },
-				typescript = { "prettierd" },
-				javascriptreact = { "prettierd" },
-				typescriptreact = { "prettierd" },
-				json = { "prettierd" },
-				html = { "prettierd" },
-				css = { "prettierd" },
-				markdown = { "prettierd" },
-				yaml = { "prettierd" },
+				javascript = { "prettierd", "prettier", stop_after_first = true },
+				typescript = { "prettierd", "prettier", stop_after_first = true },
+				javascriptreact = { "prettierd", "prettier", stop_after_first = true },
+				typescriptreact = { "prettierd", "prettier", stop_after_first = true },
+				json = { "prettierd", "prettier", stop_after_first = true },
+				html = { "prettierd", "prettier", stop_after_first = true },
+				css = { "prettierd", "prettier", stop_after_first = true },
+				markdown = { "prettierd", "prettier", stop_after_first = true },
+				yaml = { "prettierd", "prettier", stop_after_first = true },
 
 				lua = { "stylua" },
-				python = { "black" },
+				python = { "isort", "black" },
 				c = { "clang-format" },
 				cpp = { "clang-format" },
 				sh = { "shfmt" },
+			},
+			default_format_opts = {
+				lsp_format = "fallback",
 			},
 		},
 		config = function(_, opts)
 			local conform = require("conform")
 			conform.setup(opts)
 			vim.keymap.set("n", "<leader>gf", function()
-				conform.format({
-					async = true,
-					lsp_fallback = true,
-				})
+				conform.format({ async = true })
 			end, { silent = true })
 		end,
 	},
