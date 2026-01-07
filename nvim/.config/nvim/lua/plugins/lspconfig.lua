@@ -14,7 +14,23 @@ return {
     config = function()
       local capabilities = require('blink.cmp').get_lsp_capabilities()
       require("mason-lspconfig").setup({
-        ensure_installed = {},
+        ensure_installed = {
+          -- LSP
+          "lua_ls",
+          "pyright",
+          "clangd",
+          "tsserver",
+          "html",
+          "cssls",
+          "jsonls",
+
+          -- Formatters
+          "prettierd",
+          "stylua",
+          "black",
+          "clang-format",
+          "shfmt",
+        },
         handlers = {
           function(server)
             vim.lsp.config(server, { capabilities = capabilities })
@@ -48,11 +64,41 @@ return {
 
           local opts = { buffer = ev.buf, noremap = true, silent = true }
           vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-          vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+          vim.keymap.set({"n", "v"}, "gd", vim.lsp.buf.definition, opts)
+          vim.keymap.set({"n", "v"}, "gD", vim.lsp.buf.declaration, opts)
           vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
-          vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, opts)
+          vim.keymap.set({ "n", "v" }, "<leader>gf", vim.lsp.buf.format, opts)
         end,
       })
     end,
   },
+  {
+    "stevearc/conform.nvim",
+    opts = {
+      formatters_by_ft = {
+        javascript = { "prettierd" },
+        typescript = { "prettierd" },
+        javascriptreact = { "prettierd" },
+        typescriptreact = { "prettierd" },
+        json = { "prettierd" },
+        html = { "prettierd" },
+        css = { "prettierd" },
+        markdown = { "prettierd" },
+        yaml = { "prettierd" },
+
+        lua = { "stylua" },
+        python = { "black" },
+        c = { "clang-format" },
+        cpp = { "clang-format" },
+        sh = { "shfmt" },
+      },
+    },
+    config = function(_, opts)
+      local conform = require("conform")
+      conform.setup(opts)
+      vim.keymap.set("n", "<leader>gf", function()
+        conform.format({ async = true })
+      end, { silent = true })
+    end,
+  }
 }
