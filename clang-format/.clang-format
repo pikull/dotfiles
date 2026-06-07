@@ -11,7 +11,7 @@ ReferenceAlignment: Left
 
 # Allow short constructs on a single line
 AllowShortIfStatementsOnASingleLine: AllIfsAndElse
-AllowShortLoopsOnASingleLine: false
+AllowShortLoopsOnASingleLine: true
 AllowShortFunctionsOnASingleLine: All
 AllowShortBlocksOnASingleLine: Always
 
